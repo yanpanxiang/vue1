@@ -100,6 +100,7 @@ body {
   img{
     width: 50px;
     margin-top: 20px;
+    margin-left: 20px;
   }
 }
 .head-nav{
