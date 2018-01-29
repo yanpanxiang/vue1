@@ -24,12 +24,20 @@
     <div class="app-foot">
       <p>© 2016 fishenal MIT</p>
     </div>
+    <Dialog>
+      <p>other slot</p>
+    </Dialog>
   </div>
 </template>
 
 <script>
+// 引入登录，注册，关于弹窗组件
+import Dialog from './components/base/dialog.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Dialog
+  }
 }
 </script>
 
