@@ -18,13 +18,13 @@
             <h2>最新消息</h2>
             <ul>
                 <li v-for="item in newsList">
-                    <a href="item.title">{{item.title}}</a>
+                    <a class="new-item" href="item.title">{{item.title}}</a>
                 </li>
             </ul>
         </div>
       </div>
       <div class="index-right">
-        <!--上面的轮播图-->
+        <slide-show :slides="slides" :inv="invTime"></slide-show>
         <div class="index-board-list">
             <div class="index-board-item" v-for="(item, index) in boardList" :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id]">
                 <div class="index-board-item-inner">
@@ -43,9 +43,11 @@
 
 
 <script>
-// import data from '../../db.json'
-// console.log(data);
+import slideShow from '../components/slideShow'
     export default {
+        components: {
+            slideShow
+        },
         created: function() {
             this.$http.get('api/getNewsList')
             .then((res) => {
@@ -57,6 +59,29 @@
         },
         data () {
             return {
+                invTime: 2000,
+                slides: [
+                    {
+                    src: require('../assets/slideShow/pic1.jpg'),
+                    title: 'xxx1',
+                    href: 'detail/analysis'
+                    },
+                    {
+                    src: require('../assets/slideShow/pic2.jpg'),
+                    title: 'xxx2',
+                    href: 'detail/count'
+                    },
+                    {
+                    src: require('../assets/slideShow/pic3.jpg'),
+                    title: 'xxx3',
+                    href: 'http://xxx.xxx.com'
+                    },
+                    {
+                    src: require('../assets/slideShow/pic4.jpg'),
+                    title: 'xxx4',
+                    href: 'detail/forecast'
+                    }
+                ],
                  boardList: [
                         {
                         title: '开放产品',

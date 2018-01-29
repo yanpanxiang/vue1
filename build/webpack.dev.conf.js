@@ -13,6 +13,7 @@ const express = require('express')
 const app = express()
 var appData = require('../db.json')
 var getNewsList = appData.getNewsList
+var getOrderList = appData.getOrderList
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -33,6 +34,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           errno: 0,
           data: getNewsList
+        })
+      }),
+      app.get('/api/getOrderList', (req, res) => {
+        res.json({
+          errno: 0,
+          data: getOrderList
         })
       })
     },
