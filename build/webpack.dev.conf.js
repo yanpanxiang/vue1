@@ -14,6 +14,7 @@ const app = express()
 var appData = require('../db.json')
 var getNewsList = appData.getNewsList
 var getOrderList = appData.getOrderList
+var getLogin = appData.login
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -41,7 +42,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           errno: 0,
           data: getOrderList
         })
+      }),
+      app.get('/api/getLogin', (req, res) => {
+        res.json({
+          errno: 0,
+          data: getLogin
+        })
       })
+      
     },
     clientLogLevel: 'warning',
     historyApiFallback: {

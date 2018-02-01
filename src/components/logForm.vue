@@ -38,6 +38,15 @@
             onLogin () {
                 if(!this.userErrors.status || !this.passwordErrors) {
                     this.errorText = '部分选项未通过'
+                }else{
+                    this.errorText = '';
+                    this.$http.get('api/getLogin')
+                    .then((res) => {
+                      
+                        this.$emit('has-log',res.data)
+                    },(error) => {
+                        console.log(error)
+                    })
                 }
             }
         },
@@ -51,7 +60,10 @@
                     status = true;
                     errorText = ''
                 }
-
+                if(!this.userFlag) {
+                    errorText = '';
+                    this.userFlag = true
+                }
                 return {
                     status,
                     errorText
@@ -66,6 +78,10 @@
                    status = true;
                    errorText = ''
                }
+                if(!this.passwordFlag) {
+                    errorText = '';
+                    this.passwordFlag = true
+                }
                return {
                    errorText,
                    status
