@@ -1,6 +1,5 @@
 <template>
-  
-  
+    <div>in count</div>
 </template>
 
 <script>

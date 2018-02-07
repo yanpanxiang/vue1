@@ -1,7 +1,7 @@
 <template>
     <div class="dialog-wrap" >
         <div class="dialog-cover" v-if="isShow">
-
+          {{this.isShow}}
         </div>
         <transition name="drop">
           <div class="dialog-content" v-if="isShow">
@@ -26,6 +26,7 @@
             this.$emit('on-close')
           }
         }
+        
     }
 </script>
 
