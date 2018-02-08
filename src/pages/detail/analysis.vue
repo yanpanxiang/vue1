@@ -18,7 +18,7 @@
                     产品类型：
                 </div>
                  <div class="sales-board-line-right">
-
+                    <selection @on-change="onParamChange('buyType', $event)" :selections="buyTypes"></selection>
                 </div>
             </div>
             <div class="sales-board-line">
@@ -106,14 +106,36 @@
 
 <script>
 import Dialog from '../../components/base/dialog'
+import Selection from '../../components/base/selection'
     export default {
         components: {
-            MyDialog: Dialog
+            MyDialog: Dialog,
+            Selection
         },
         data () {
             return {
                 isShowPayDialog: false,
-                isShowErrDialog: false
+                isShowErrDialog: false,
+                buyType: {},
+                buyTypes: [
+                    {
+                    label: '入门版',
+                    value: 0
+                    },
+                    {
+                    label: '中级版',
+                    value: 1
+                    },
+                    {
+                    label: '高级版',
+                    value: 2
+                    }
+                ]
+            }
+        },
+        methods: {
+            onParamChange (attr, val) {
+                this[attr] = val;
             }
         }
         
